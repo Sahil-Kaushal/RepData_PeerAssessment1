@@ -196,11 +196,16 @@ $(document).ready(function () {
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
 <div id="load-the-data-i.e.read.csv" class="section level5">
-<h5>Load the data (i.e. read.csv())</h5>
+<h5>1. Load the data (i.e. read.csv())</h5>
 <pre class="r"><code>if(!file.exists('activity.csv')){
     unzip('activity.zip')
 }
 activityData &lt;- read.csv('activity.csv')</code></pre>
+</div>
+<div id="processtransform-the-data-if-necessary-into-a-format-suitable-for-your-analysis" class="section level5">
+<h5>2. Process/transform the data (if necessary) into a format suitable for your analysis</h5>
+<pre class="r"><code>#activityData$interval &lt;- strptime(gsub(&quot;([0-9]{1,2})([0-9]{2})&quot;, &quot;\\1:\\2&quot;, activityData$interval), format='%H:%M')</code></pre>
+<hr />
 </div>
 </div>
 <div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level2">

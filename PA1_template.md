@@ -8,7 +8,7 @@ output:
 
 
 ## Loading and preprocessing the data
-#####  Load the data (i.e. read.csv())
+##### 1. Load the data (i.e. read.csv())
 
 ```r
 if(!file.exists('activity.csv')){
@@ -16,7 +16,13 @@ if(!file.exists('activity.csv')){
 }
 activityData <- read.csv('activity.csv')
 ```
+##### 2. Process/transform the data (if necessary) into a format suitable for your analysis
 
+```r
+#activityData$interval <- strptime(gsub("([0-9]{1,2})([0-9]{2})", "\\1:\\2", activityData$interval), format='%H:%M')
+```
+
+-----
 
 ## What is mean total number of steps taken per day?
 
@@ -30,7 +36,7 @@ stepsByDay <- tapply(activityData$steps, activityData$date, sum, na.rm=TRUE)
 qplot(stepsByDay, xlab='Total steps per day', ylab='Frequency using binwith 500', binwidth=500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ##### 2. Calculate and report the mean and median total number of steps taken per day
 
@@ -58,7 +64,7 @@ ggplot(data=averageStepsPerTimeBlock, aes(x=interval, y=meanSteps)) +
     ylab("average number of steps taken") 
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 ##### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -96,7 +102,7 @@ stepsByDayImputed <- tapply(activityDataImputed$steps, activityDataImputed$date,
 qplot(stepsByDayImputed, xlab='Total steps per day (Imputed)', ylab='Frequency using binwith 500', binwidth=500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
 
 ##### ... and Calculate and report the mean and median total number of steps taken per day. 
 
@@ -130,4 +136,4 @@ ggplot(averagedActivityDataImputed, aes(interval, steps)) +
     ylab("avarage number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
